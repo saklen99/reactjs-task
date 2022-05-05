@@ -1,10 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import Table from './Table';
+
+import Formin from './Formin';
 
 function App() {
   return (
-    <Table />
+    <div>
+    
+    <Formin />
+    </div>
   );
 }
 
