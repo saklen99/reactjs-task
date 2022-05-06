@@ -2,12 +2,12 @@ import React from "react";
 import {useState} from 'react';
 import Data from './Data';
 
-function Formin(props)
+function Formin()
 {
     const [name, setName] = useState('');
     const [email, setName2] = useState('');
     const [contact, setName3] = useState('');
-
+    
         const changen=(event)=>
         {
                 setName(event.target.value);
@@ -37,7 +37,7 @@ function Formin(props)
         
         <form >
             <div>
-            <Data />
+            <Data val={val}/>
                 
                name: <input type="text" name="name" value={name} onChange={changen} /><br/><br/>
                 

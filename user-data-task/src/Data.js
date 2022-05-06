@@ -1,9 +1,6 @@
-
-    
        
-    
-        
-const  Data = ()=>{
+const  Data = (props)=>{
+  console.log(props)
   const info = [
     {
       name : 'sp',
@@ -23,7 +20,13 @@ const  Data = ()=>{
     
   ];
   
-
+  const arrdata =  [
+    {
+    name : 'name',
+    gmail:'gmail',
+    number:'number',
+    }
+]       
 
       
   return(
@@ -40,7 +43,7 @@ const  Data = ()=>{
                 <tbody>
                   <tr>
                    
-                
+
                 
                 {info.map((info) => (
                   <div>
