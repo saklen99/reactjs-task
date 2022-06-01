@@ -3,22 +3,21 @@ import classes from './module.css';
 import Card from './Card.css';
 import { useState } from 'react';
 
-const PostData = (props) => {
+const PostData = ({ postData, setData }) => {
 
-    const [Data, SetData] = useState({
+    const [post, setPost] = useState({
         title: " ",
         description: " ",
     });
+    const [info, setInfo] = useState('')
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(title, description);
         const contain = {
             userId: 1,
-            title: title,
-            body: description,
-
+            title: post.title,
+            body: post.description,
         }
 
         fetch('https://jsonplaceholder.typicode.com/posts', {
@@ -26,24 +25,23 @@ const PostData = (props) => {
             headers: { 'content-type': 'application/JSON' },
             body: JSON.stringify(contain)
         }
-        ).then((res) => res.json).then((json) => console.log(json));
+        ).then(res => res.json()).then((responce) => setInfo(responce))
 
-
+        console.log('info', info);
+        const newData = [...postData, info]
+        setData(newData)
     }
-
 
     const handleInputChanged = (e) => {
 
         const { name, value } = e.target;
-        SetData((pre) => {
+        setPost((pre) => {
             return {
                 ...pre,
                 [name]: value,
             };
         });
-
     }
-    const { title, description } = Data;
 
     return (
         <div >
@@ -51,11 +49,11 @@ const PostData = (props) => {
             <form className={'classes.form'}>
                 <div>
                     <label >Title: </label>
-                    <input type="text" value={title} name="title" onChange={handleInputChanged} /><br /><br />
+                    <input type="text" value={post.title} name="title" onChange={handleInputChanged} /><br /><br />
                 </div>
                 <div>
                     <label>Description: </label>
-                    <input type="text" value={description} name='description' onChange={handleInputChanged} /><br /><br />
+                    <input type="text" value={post.description} name='description' onChange={handleInputChanged} /><br /><br />
                 </div>
                 <button type="submit" onClick={handleSubmit}>SUBMIT</button>
 
