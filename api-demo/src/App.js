@@ -3,7 +3,7 @@ import './App.css';
 import GetData from './Components/GetData';
 
 
-function App() {
+const App =() =>{
   return (
     <>
       <GetData />
