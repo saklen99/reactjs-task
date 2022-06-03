@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+.Card {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  text-align: center;
+  margin: 10px 25% 10px 25%;
+  
+}
+
+
+btn{
+    
+  background-color: aliceblue;
+  font-size: medium;
+  
+}
+
+form
+{
+    background:white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 10px;
+    margin: 10px 25% 10px 25%;
+    padding:25px;
+    text-align: center;
+}
+
+button{
+  cursor: pointer;
+  background-color: white;
+  border-radius: 12px;
+  
+}
+
+label{
+  width: 95px;
+    display: inline-block;
+}
+
+.button1{
+  background-color:rgb(238, 43, 43);
+  color: white;
+  
+}
+
+.submit
+{
+  padding: 8px 16px;
+ background-color: #e3e9f5;
+}

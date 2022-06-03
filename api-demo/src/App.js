@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import GetData from './Components/GetData';
+import ListDisplay from './Components/ListDisplay';
+
 
 
 const App =() =>{
   return (
     <>
-      <GetData />
+      <ListDisplay />
     </>
   );
 }

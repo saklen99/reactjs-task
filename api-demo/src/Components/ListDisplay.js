@@ -2,14 +2,13 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import PostData from './PostData';
 
-const GetData = () => {
+const ListDisplay = () => {
     const [Data, setData] = useState([]);
-    const[updata,setupdata]=useState();
-   
+    const [updata, setupdata] = useState();
 
-    const postapi = () => {
+    const getlist = () => {
         console.log(process.env.REACT_APP_BASE_URL)
-        fetch(process.env.REACT_APP_BASE_URL +'posts').then(res => res.json())
+        fetch(process.env.REACT_APP_BASE_URL).then(res => res.json())
             .then(
                 (info) => {
                     setData(info);
@@ -17,55 +16,52 @@ const GetData = () => {
     }
 
     useEffect(() => {
-        postapi();
+        getlist();
     }, []);
 
     const deleteData = (id) => {
         console.log('id', id)
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-            method: 'DELETE'
+        fetch(process.env.REACT_APP_BASE_URL + `${id}`, {
+            method: 'DELETE',
         }).then((res) => {
             res.json().then((respons) => {
-                console.log(respons);
 
+                console.log('del', respons);
             })
         })
     }
 
-    
     const updateuser = (id) => {
-        console.log('id',Data[id-1])
-        // let Data = {Data}[id];
-        // setData(Data.title);
-        // setData(Data[id-1].post.title)
+        console.log('id', Data[id - 1])
 
-        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        fetch(process.env.REACT_APP_BASE_URL + `${id}`, {
             method: 'PUT',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify(Data[id-1])
-          }).then((result) => {
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(Data[id - 1])
+        }).then((result) => {
             result.json().then((resp) => {
                 setupdata(resp);
-                console.log('resssss',resp)
-              
+                console.log('res', resp)
+
             })
-          })
+        })
+
     }
 
     return (
         <div >
             <div >
                 <PostData postData={Data}
-                    setData={setData} 
+                    setData={setData}
                     updata={updata}
-                   />
+                />
 
                 {Data.map((Data) => (
                     <div class="Card" >
                         <h2>ID:{Data.id}</h2>
-                        <h4>TITLE:{Data.title}</h4>
-                        <p>BODY:{Data.body}</p>
-                        <button onClick={() => deleteData(Data.id)}>DELETE</button><br />
+                        <h4>Title:{Data.title}</h4>
+                        <p>Body:{Data.body}</p>
+                        <button class="button1" onClick={() => deleteData(Data.id)}>DELETE</button><br />
                         <button onClick={() => updateuser(Data.id)}>UPDATE</button>
                     </div>
                 ))}
@@ -74,4 +70,4 @@ const GetData = () => {
     )
 }
 
-export default GetData;
+export default ListDisplay;
